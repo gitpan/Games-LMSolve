@@ -1,6 +1,6 @@
 #XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
 name:         Games-LMSolve
-version:      0.7.10
+version:      0.7.12
 version_from: lib/Games/LMSolve/Base.pm
 installdirs:  site
 requires:

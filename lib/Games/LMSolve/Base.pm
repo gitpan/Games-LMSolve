@@ -6,7 +6,7 @@ use Getopt::Long;
 
 use vars qw($VERSION);
 
-$VERSION = '0.7.10';
+$VERSION = '0.7.12';
 
 use Exporter;
 
@@ -37,6 +37,8 @@ Games::LMSolve::Base - base class for puzzle solvers.
 =head1 SYNOPSIS
 
     package MyPuzzle::Solver;
+
+    use Games::LMSolve::Base;
     
     @ISA = qw(Games::LMSolve::Base);
 
