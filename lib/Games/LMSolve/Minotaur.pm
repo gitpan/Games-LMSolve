@@ -117,7 +117,7 @@ sub display_state
 
 # This function checks if a state it receives as an argument is a
 # dead-end one.
-sub check_if_unsolveable
+sub check_if_unsolvable
 {
     my $self = shift;
     my $coords = shift;
@@ -170,7 +170,6 @@ sub enumerate_moves
     push @moves, "w";
 
     return @moves;
-    
 }
 
 my %translate_moves = 

@@ -1,5 +1,5 @@
 Name: lm-solve
-Version: 0.7.4
+Version: 0.7.10
 Release: 1
 Group: Amusement/Games
 Source: http://vipe.technion.ac.il/~shlomif/lm-solve/Games-LMSolve-%{version}.tar.gz
