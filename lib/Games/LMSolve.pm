@@ -59,13 +59,19 @@ You can also use set_default_variant() to set the default variant.
 After all that, in your main script initialize a registry object, and
 call the main() method.
 
-=head1 SEE ALSO
+=head1 METHODS
 
-L<Games::LMSolve::Base>
+=head2 new
 
-=head1 AUTHORS
+The constructor. Accepts the following named arguments:
 
-Shlomi Fish E<lt>shlomif@vipe.technion.ac.ilE<gt>
+=over 4
+
+=item * 'default_variant'
+
+The default variant for the registry to be used in case one is not specified.
+
+=back
 
 =cut
 
@@ -100,6 +106,12 @@ sub _initialize
     return 0;
 }
 
+=head2 $registry->set_default_variant($variant)
+
+Sets the default variant to $variant.
+
+=cut
+
 sub set_default_variant
 {
     my $self = shift;
@@ -110,6 +122,12 @@ sub set_default_variant
 
     return 0;
 }
+
+=head2 $self->register_solvers(\%solvers)
+
+Adds the %solvers map of names to class names to the registry.
+
+=cut
 
 sub register_solvers
 {
@@ -122,12 +140,26 @@ sub register_solvers
     return 0;
 }
 
+=head2 $self->register_all_solvers()
+
+To be sub-classes to register all the solvers that the registry wants
+to register. Does nothing here.
+
+=cut
+
 sub register_all_solvers
 {
     my $self = shift;
 
     return 0;
 }
+
+=head2 $self->main()
+
+the main function that handles the command line arguments and runs the
+program.
+
+=cut
 
 sub main
 {
@@ -166,4 +198,54 @@ sub main
 }
 1;
 
+=head1 SEE ALSO
 
+L<Games::LMSolve::Base>
+
+L<http://www.shlomifish.org/lm-solve/> - the LM-Solve homepage.
+
+=head1 BUGS
+
+Please report any bugs or feature requests to
+C<bug-games-lmsolve at rt.cpan.org>, or through the web interface at
+L<http://rt.cpan.org/NoAuth/ReportBug.html?Queue=Games-LMSolve>.
+I will be notified, and then you'll automatically be notified of progress on
+your bug as I make changes.
+
+=head1 SUPPORT
+
+You can find documentation for this module with the perldoc command.
+
+    perldoc Games::LMSolve
+
+You can also look for information at:
+
+=over 4
+
+=item * AnnoCPAN: Annotated CPAN documentation
+
+L<http://annocpan.org/dist/Games-LMSolve>
+
+=item * CPAN Ratings
+
+L<http://cpanratings.perl.org/d/Games-LMSolve>
+
+=item * RT: CPAN's request tracker
+
+L<http://rt.cpan.org/NoAuth/Bugs.html?Dist=Games-LMSolve>
+
+=item * Search CPAN
+
+L<http://search.cpan.org/dist/Games-LMSolve>
+
+=back
+
+=head1 AUTHORS
+
+Shlomi Fish, L<http://www.shlomifish.org/>
+
+=head1 COPYRIGHT & LICENSE
+
+Copyright 2002 Shlomi Fish, all rights reserved.
+
+This program is released under the following license: MIT X11.

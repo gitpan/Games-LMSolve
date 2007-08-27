@@ -6,7 +6,7 @@ use Getopt::Long;
 
 use vars qw($VERSION);
 
-$VERSION = '0.8.1';
+$VERSION = '0.8.3';
 
 use Exporter;
 
@@ -69,10 +69,17 @@ to use it, one must inherit from it and implement some abstract methods.
 Afterwards, its interface functions can be invoked to actually solve
 the game.
 
-=head1 Methods to Override
+=head1 METHODS
+
+=head2 new()
+
+The constructor.
+
+=head2 $self->initialize()
+
+Should be inherited to implement the construction.
 
 =cut
-    
 
 sub new
 {
@@ -99,7 +106,73 @@ sub initialize
     return 0;
 }
 
-sub die_on_abstract_function
+=head2 $self->main()
+
+Actually solve the board based on the arguments in the command line.
+
+=cut
+
+my %scan_functions =
+(
+    'dfs' => sub {
+        my $self = shift;
+
+        return $self->_solve_brfs_or_dfs(1, @_);
+    },
+    'brfs' => sub {
+        my $self = shift;
+
+        return $self->_solve_brfs_or_dfs(0, @_);
+    },
+);
+
+sub main
+{
+    my $self = shift;
+
+    # This is a flag that specifies whether to present the moves in Run-Length
+    # Encoding.
+    my $to_rle = 1;
+    my $output_states = 0;
+    my $scan = "brfs";
+    my $run_time_states_display = 0;
+
+    #my $p = Getopt::Long::Parser->new();
+    if (! GetOptions('rle!' => \$to_rle, 
+        'output-states!' => \$output_states,
+        'method=s' => \$scan,
+        'rtd!' => \$run_time_states_display,
+        ))
+    {
+        die "Incorrect options passed!\n"
+    }
+
+    if (!exists($scan_functions{$scan}))
+    {
+        die "Unknown scan \"$scan\"!\n";
+    }
+
+    $self->{'cmd_line'}->{'to_rle'} = $to_rle;
+    $self->{'cmd_line'}->{'output_states'} = $output_states;
+    $self->{'cmd_line'}->{'scan'} = $scan;
+    $self->set_run_time_states_display($run_time_states_display && \&_default_rtd_callback);
+
+    my $filename = shift(@ARGV) || "board.txt";
+
+    my @ret = $self->solve_board($filename);
+
+    $self->display_solution(@ret);
+}
+
+
+=head1 METHODS TO OVERRIDE
+
+=cut
+    
+
+
+
+sub _die_on_abstract_function
 {
     my ($package, $filename, $line, $subroutine, $hasargs,
         $wantarray, $evaltext, $is_require, $hints, $bitmask) = caller(1);
@@ -107,7 +180,7 @@ sub die_on_abstract_function
         "called, while it needs to be overrided by the derived class.\n");
 }
 
-=head2 input_board($self, $file_spec);
+=head2 input_board($self, $file_spec)
 
 This method is responsible to read the "board" (the permanent parameters) of 
 the puzzle and its initial state. It should place the board in the object's
@@ -119,11 +192,12 @@ handle all cases.
 
 You can look at the Games::LMSolve::Input module for methods that facilitate
 inputting a board.
+
 =cut
 
 sub input_board
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 pack_state($self, $state_vector)
@@ -138,7 +212,7 @@ like). A state in packed form must be a string.
 # and returns an atom that represents it.
 sub pack_state
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 unpack_state($self, $packed_state)
@@ -152,7 +226,7 @@ expanded form.
 # and returns an array ref that represents it.
 sub unpack_state
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 display_state($self, $packed_state)
@@ -166,7 +240,7 @@ representation of the state.
 # user-readable string that describes it.
 sub display_state
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 check_if_final_state($self, $state_vector)
@@ -178,7 +252,7 @@ a final state, and the game is over.
 
 sub check_if_final_state
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 enumerate_moves($self, $state_vector)
@@ -193,7 +267,7 @@ that can be performed on this state.
 # one. I.e: it is possible that it is illegal to perform it.
 sub enumerate_moves
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 perform_move($self, $state_vector, $move)
@@ -211,7 +285,7 @@ be performed.
 # Else, it returns undef to indicate that the move is not possible.
 sub perform_move
 {
-    return &die_on_abstract_function();
+    return _die_on_abstract_function();
 }
 
 =head2 check_if_unsolvable($self, $state_vector) (optional over-riding)
@@ -250,7 +324,7 @@ sub render_move
 
 =cut
 
-sub solve_brfs_or_dfs
+sub _solve_brfs_or_dfs
 {
     my $self = shift;
     my $state_collection = $self->{'state_collection'};
@@ -347,7 +421,7 @@ sub solve_brfs_or_dfs
     return @ret;
 }
 
-sub run_length_encoding
+sub _run_length_encoding
 {
     my @moves = @_;
     my @ret = ();
@@ -373,21 +447,8 @@ sub run_length_encoding
     return @ret;    
 }
 
-my %scan_functions =
-(
-    'dfs' => sub {
-        my $self = shift;
 
-        return $self->solve_brfs_or_dfs(1, @_);
-    },
-    'brfs' => sub {
-        my $self = shift;
-
-        return $self->solve_brfs_or_dfs(0, @_);
-    },
-);
-
-sub solve_state
+sub _solve_state
 {
     my $self = shift;
     
@@ -420,7 +481,7 @@ sub solve_board
 
     my $initial_coords = $self->input_board($filename);
 
-    return $self->solve_state($initial_coords, @_);
+    return $self->_solve_state($initial_coords, @_);
 }
 
 =head2 $self->run_scan(%args)
@@ -512,7 +573,7 @@ sub display_solution
         my $num_state;
         if ($to_rle)
         {
-            my @moves_rle = &run_length_encoding(@moves);
+            my @moves_rle = _run_length_encoding(@moves);
             my ($m);
 
             $num_state = 0;
@@ -542,44 +603,6 @@ sub _default_rtd_callback
 
     my %args = @_;
     print ((" " x $args{depth}) . join(",", @{$args{state}}) . " M=" . $self->render_move($args{move}) ."\n");
-}
-
-sub main
-{
-    my $self = shift;
-
-    # This is a flag that specifies whether to present the moves in Run-Length
-    # Encoding.
-    my $to_rle = 1;
-    my $output_states = 0;
-    my $scan = "brfs";
-    my $run_time_states_display = 0;
-
-    #my $p = Getopt::Long::Parser->new();
-    if (! GetOptions('rle!' => \$to_rle, 
-        'output-states!' => \$output_states,
-        'method=s' => \$scan,
-        'rtd!' => \$run_time_states_display,
-        ))
-    {
-        die "Incorrect options passed!\n"
-    }
-
-    if (!exists($scan_functions{$scan}))
-    {
-        die "Unknown scan \"$scan\"!\n";
-    }
-
-    $self->{'cmd_line'}->{'to_rle'} = $to_rle;
-    $self->{'cmd_line'}->{'output_states'} = $output_states;
-    $self->{'cmd_line'}->{'scan'} = $scan;
-    $self->set_run_time_states_display($run_time_states_display && \&_default_rtd_callback);
-
-    my $filename = shift(@ARGV) || "board.txt";
-
-    my @ret = $self->solve_board($filename);
-
-    $self->display_solution(@ret);
 }
 
 =head2 $self->set_run_time_states_display(\&states_display_callback)
@@ -619,7 +642,7 @@ L<Games::LMSolve::Input>
 
 =head1 AUTHORS
 
-Shlomi Fish, E<lt>shlomif@vipe.technion.ac.ilE<gt>
+Shlomi Fish, L<http://www.shlomifish.org/>
 
 =cut 
 

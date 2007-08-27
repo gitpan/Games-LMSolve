@@ -1,9 +1,44 @@
-#XXXXXXX This is a prototype!!!  It will change in the future!!! XXXXX#
-name:         Games-LMSolve
-version:      0.8.1
-version_from: lib/Games/LMSolve/Base.pm
-installdirs:  site
-requires:
-
-distribution_type: module
-generated_by: ExtUtils::MakeMaker version 6.10_08
+---
+name: Games-LMSolve
+version: 0.8.3
+author: []
+abstract: base class for puzzle solvers.
+license: perl
+resources:
+  license: http://dev.perl.org/licenses/
+build_requires:
+  Test::More: 0
+provides:
+  Games::LMSolve:
+    file: lib/Games/LMSolve.pm
+  Games::LMSolve::Alice:
+    file: lib/Games/LMSolve/Alice.pm
+  Games::LMSolve::Base:
+    file: lib/Games/LMSolve/Base.pm
+    version: 0.8.3
+  Games::LMSolve::Input:
+    file: lib/Games/LMSolve/Input.pm
+  Games::LMSolve::Input::Scalar::FH:
+    file: lib/Games/LMSolve/Input.pm
+  Games::LMSolve::Minotaur:
+    file: lib/Games/LMSolve/Minotaur.pm
+  Games::LMSolve::Numbers:
+    file: lib/Games/LMSolve/Numbers.pm
+  Games::LMSolve::Plank::Base:
+    file: lib/Games/LMSolve/Plank/Base.pm
+  Games::LMSolve::Plank::Hex:
+    file: lib/Games/LMSolve/Plank/Hex.pm
+  Games::LMSolve::Registry:
+    file: lib/Games/LMSolve/Registry.pm
+  Games::LMSolve::Tilt::Base:
+    file: lib/Games/LMSolve/Tilt/Base.pm
+  Games::LMSolve::Tilt::Multi:
+    file: lib/Games/LMSolve/Tilt/Multi.pm
+  Games::LMSolve::Tilt::RedBlue:
+    file: lib/Games/LMSolve/Tilt/RedBlue.pm
+  Games::LMSolve::Tilt::Single:
+    file: lib/Games/LMSolve/Tilt/Single.pm
+generated_by: Module::Build version 0.2805
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.2.html
+  version: 1.2
