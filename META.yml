@@ -1,11 +1,22 @@
 ---
 name: Games-LMSolve
-version: 0.8.3
-author: []
+version: 0.8.4
+author:
+  - 'Shlomi Fish <shlomif@iglu.org.il>'
 abstract: base class for puzzle solvers.
-license: perl
+license: mit
 resources:
-  license: http://dev.perl.org/licenses/
+  homepage: http://www.shlomifish.org/lm-solve/
+  license: http://www.opensource.org/licenses/mit-license.php
+  repository: http://svn.berlios.de/svnroot/repos/quad-pres/lm-solve/
+requires:
+  English: 0
+  Exporter: 0
+  Getopt::Long: 0
+  Pod::Usage: 0
+  strict: 0
+  vars: 0
+  warnings: 0
 build_requires:
   Test::More: 0
 provides:
@@ -15,7 +26,7 @@ provides:
     file: lib/Games/LMSolve/Alice.pm
   Games::LMSolve::Base:
     file: lib/Games/LMSolve/Base.pm
-    version: 0.8.3
+    version: 0.8.4
   Games::LMSolve::Input:
     file: lib/Games/LMSolve/Input.pm
   Games::LMSolve::Input::Scalar::FH:
@@ -38,7 +49,29 @@ provides:
     file: lib/Games/LMSolve/Tilt/RedBlue.pm
   Games::LMSolve::Tilt::Single:
     file: lib/Games/LMSolve/Tilt/Single.pm
-generated_by: Module::Build version 0.2805
+generated_by: Module::Build version 0.33
 meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.2.html
-  version: 1.2
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+keywords:
+  - alice
+  - brfs
+  - dfs
+  - game
+  - games
+  - inheritance
+  - logic
+  - logic mazes
+  - mazes
+  - minotaur
+  - plank
+  - pure-perl
+  - puzzle
+  - puzzles
+  - riddle
+  - riddles
+  - scan
+  - search
+  - swamp
+  - theseus
+  - tilt

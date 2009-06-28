@@ -17,11 +17,51 @@ my $build = Test::Run::Builder->new(
     },
     requires => 
     {
+        'English' => 0,
+        'Exporter' => 0,
+        'Getopt::Long' => 0,
+        'Pod::Usage' => 0,
+        'strict' => 0,
+        'vars' => 0,
+        'warnings' => 0,
     },
+    dist_author => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from => "lib/Games/LMSolve/Base.pm",
-    license => "perl",
+    license => "mit",
     create_makefile_pl => 'traditional',
     script_files => ["lm-solve"],
+    meta_merge =>
+    {
+        resources =>
+        {
+            repository => "http://svn.berlios.de/svnroot/repos/quad-pres/lm-solve/",
+            homepage => "http://www.shlomifish.org/lm-solve/",
+        },
+        keywords =>
+        [
+            "alice",
+            "brfs",
+            "dfs",
+            "game",
+            "games",
+            "inheritance",
+            "logic",
+            "logic mazes",
+            "mazes",
+            "minotaur",
+            "plank",
+            "pure-perl",
+            "puzzle",
+            "puzzles",
+            "riddle",
+            "riddles",
+            "scan",
+            "search",
+            "swamp",
+            "theseus",
+            "tilt",
+        ],
+    },
 );
 
 $build->create_build_script;

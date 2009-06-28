@@ -1,12 +1,13 @@
 package Games::LMSolve::Base;
 
 use strict;
+use warnings;
 
 use Getopt::Long;
 
 use vars qw($VERSION);
 
-$VERSION = '0.8.3';
+$VERSION = '0.8.4';
 
 use Exporter;
 
