@@ -1,58 +1,13 @@
 ---
-name: Games-LMSolve
-version: 0.8.4
+abstract: 'base class for puzzle solvers.'
 author:
   - 'Shlomi Fish <shlomif@iglu.org.il>'
-abstract: base class for puzzle solvers.
-license: mit
-resources:
-  homepage: http://www.shlomifish.org/lm-solve/
-  license: http://www.opensource.org/licenses/mit-license.php
-  repository: http://svn.berlios.de/svnroot/repos/quad-pres/lm-solve/
-requires:
-  English: 0
-  Exporter: 0
-  Getopt::Long: 0
-  Pod::Usage: 0
-  strict: 0
-  vars: 0
-  warnings: 0
 build_requires:
   Test::More: 0
-provides:
-  Games::LMSolve:
-    file: lib/Games/LMSolve.pm
-  Games::LMSolve::Alice:
-    file: lib/Games/LMSolve/Alice.pm
-  Games::LMSolve::Base:
-    file: lib/Games/LMSolve/Base.pm
-    version: 0.8.4
-  Games::LMSolve::Input:
-    file: lib/Games/LMSolve/Input.pm
-  Games::LMSolve::Input::Scalar::FH:
-    file: lib/Games/LMSolve/Input.pm
-  Games::LMSolve::Minotaur:
-    file: lib/Games/LMSolve/Minotaur.pm
-  Games::LMSolve::Numbers:
-    file: lib/Games/LMSolve/Numbers.pm
-  Games::LMSolve::Plank::Base:
-    file: lib/Games/LMSolve/Plank/Base.pm
-  Games::LMSolve::Plank::Hex:
-    file: lib/Games/LMSolve/Plank/Hex.pm
-  Games::LMSolve::Registry:
-    file: lib/Games/LMSolve/Registry.pm
-  Games::LMSolve::Tilt::Base:
-    file: lib/Games/LMSolve/Tilt/Base.pm
-  Games::LMSolve::Tilt::Multi:
-    file: lib/Games/LMSolve/Tilt/Multi.pm
-  Games::LMSolve::Tilt::RedBlue:
-    file: lib/Games/LMSolve/Tilt/RedBlue.pm
-  Games::LMSolve::Tilt::Single:
-    file: lib/Games/LMSolve/Tilt/Single.pm
-generated_by: Module::Build version 0.33
-meta-spec:
-  url: http://module-build.sourceforge.net/META-spec-v1.4.html
-  version: 1.4
+configure_requires:
+  Module::Build: 0.36
+dynamic_config: 1
+generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921'
 keywords:
   - alice
   - brfs
@@ -61,7 +16,7 @@ keywords:
   - games
   - inheritance
   - logic
-  - logic mazes
+  - 'logic mazes'
   - mazes
   - minotaur
   - plank
@@ -75,3 +30,64 @@ keywords:
   - swamp
   - theseus
   - tilt
+license: mit
+meta-spec:
+  url: http://module-build.sourceforge.net/META-spec-v1.4.html
+  version: 1.4
+name: Games-LMSolve
+provides:
+  Games::LMSolve:
+    file: lib/Games/LMSolve.pm
+    version: 0
+  Games::LMSolve::Alice:
+    file: lib/Games/LMSolve/Alice.pm
+    version: 0
+  Games::LMSolve::Base:
+    file: lib/Games/LMSolve/Base.pm
+    version: v0.8.5
+  Games::LMSolve::Input:
+    file: lib/Games/LMSolve/Input.pm
+    version: 0
+  Games::LMSolve::Input::Scalar::FH:
+    file: lib/Games/LMSolve/Input.pm
+    version: 0
+  Games::LMSolve::Minotaur:
+    file: lib/Games/LMSolve/Minotaur.pm
+    version: 0
+  Games::LMSolve::Numbers:
+    file: lib/Games/LMSolve/Numbers.pm
+    version: 0
+  Games::LMSolve::Plank::Base:
+    file: lib/Games/LMSolve/Plank/Base.pm
+    version: 0
+  Games::LMSolve::Plank::Hex:
+    file: lib/Games/LMSolve/Plank/Hex.pm
+    version: 0
+  Games::LMSolve::Registry:
+    file: lib/Games/LMSolve/Registry.pm
+    version: 0
+  Games::LMSolve::Tilt::Base:
+    file: lib/Games/LMSolve/Tilt/Base.pm
+    version: 0
+  Games::LMSolve::Tilt::Multi:
+    file: lib/Games/LMSolve/Tilt/Multi.pm
+    version: 0
+  Games::LMSolve::Tilt::RedBlue:
+    file: lib/Games/LMSolve/Tilt/RedBlue.pm
+    version: 0
+  Games::LMSolve::Tilt::Single:
+    file: lib/Games/LMSolve/Tilt/Single.pm
+    version: 0
+requires:
+  English: 0
+  Exporter: 0
+  Getopt::Long: 0
+  Pod::Usage: 0
+  strict: 0
+  vars: 0
+  warnings: 0
+resources:
+  homepage: http://www.shlomifish.org/lm-solve/
+  license: http://www.opensource.org/licenses/mit-license.php
+  repository: http://bitbucket.org/shlomif/lm-solve-source
+version: v0.8.5

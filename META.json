@@ -1,0 +1,131 @@
+{
+   "abstract" : "base class for puzzle solvers.",
+   "author" : [
+      "Shlomi Fish <shlomif@iglu.org.il>"
+   ],
+   "dynamic_config" : 1,
+   "generated_by" : "Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921",
+   "keywords" : [
+      "alice",
+      "brfs",
+      "dfs",
+      "game",
+      "games",
+      "inheritance",
+      "logic",
+      "logic mazes",
+      "mazes",
+      "minotaur",
+      "plank",
+      "pure-perl",
+      "puzzle",
+      "puzzles",
+      "riddle",
+      "riddles",
+      "scan",
+      "search",
+      "swamp",
+      "theseus",
+      "tilt"
+   ],
+   "license" : [
+      "mit"
+   ],
+   "meta-spec" : {
+      "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
+      "version" : "2"
+   },
+   "name" : "Games-LMSolve",
+   "prereqs" : {
+      "build" : {
+         "requires" : {
+            "Test::More" : "0"
+         }
+      },
+      "configure" : {
+         "requires" : {
+            "Module::Build" : "0.36"
+         }
+      },
+      "runtime" : {
+         "requires" : {
+            "English" : "0",
+            "Exporter" : "0",
+            "Getopt::Long" : "0",
+            "Pod::Usage" : "0",
+            "strict" : "0",
+            "vars" : "0",
+            "warnings" : "0"
+         }
+      }
+   },
+   "provides" : {
+      "Games::LMSolve" : {
+         "file" : "lib/Games/LMSolve.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Alice" : {
+         "file" : "lib/Games/LMSolve/Alice.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Base" : {
+         "file" : "lib/Games/LMSolve/Base.pm",
+         "version" : "v0.8.5"
+      },
+      "Games::LMSolve::Input" : {
+         "file" : "lib/Games/LMSolve/Input.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Input::Scalar::FH" : {
+         "file" : "lib/Games/LMSolve/Input.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Minotaur" : {
+         "file" : "lib/Games/LMSolve/Minotaur.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Numbers" : {
+         "file" : "lib/Games/LMSolve/Numbers.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Plank::Base" : {
+         "file" : "lib/Games/LMSolve/Plank/Base.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Plank::Hex" : {
+         "file" : "lib/Games/LMSolve/Plank/Hex.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Registry" : {
+         "file" : "lib/Games/LMSolve/Registry.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Tilt::Base" : {
+         "file" : "lib/Games/LMSolve/Tilt/Base.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Tilt::Multi" : {
+         "file" : "lib/Games/LMSolve/Tilt/Multi.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Tilt::RedBlue" : {
+         "file" : "lib/Games/LMSolve/Tilt/RedBlue.pm",
+         "version" : 0
+      },
+      "Games::LMSolve::Tilt::Single" : {
+         "file" : "lib/Games/LMSolve/Tilt/Single.pm",
+         "version" : 0
+      }
+   },
+   "release_status" : "stable",
+   "resources" : {
+      "homepage" : "http://www.shlomifish.org/lm-solve/",
+      "license" : [
+         "http://www.opensource.org/licenses/mit-license.php"
+      ],
+      "repository" : {
+         "url" : "http://bitbucket.org/shlomif/lm-solve-source"
+      }
+   },
+   "version" : "v0.8.5"
+}

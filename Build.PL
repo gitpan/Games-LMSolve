@@ -11,11 +11,15 @@ use Test::Run::Builder;
 
 my $build = Test::Run::Builder->new(
     module_name => "Games::LMSolve",
+    configure_requires =>
+    {
+        'Module::Build' => '0.36',
+    },
     build_requires =>
     {
         "Test::More" => 0,
     },
-    requires => 
+    requires =>
     {
         'English' => 0,
         'Exporter' => 0,
@@ -28,13 +32,12 @@ my $build = Test::Run::Builder->new(
     dist_author => 'Shlomi Fish <shlomif@iglu.org.il>',
     dist_version_from => "lib/Games/LMSolve/Base.pm",
     license => "mit",
-    create_makefile_pl => 'traditional',
     script_files => ["lm-solve"],
     meta_merge =>
     {
         resources =>
         {
-            repository => "http://svn.berlios.de/svnroot/repos/quad-pres/lm-solve/",
+            repository => "http://bitbucket.org/shlomif/lm-solve-source",
             homepage => "http://www.shlomifish.org/lm-solve/",
         },
         keywords =>
