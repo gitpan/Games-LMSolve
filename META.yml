@@ -7,7 +7,7 @@ build_requires:
 configure_requires:
   Module::Build: 0.36
 dynamic_config: 1
-generated_by: 'Module::Build version 0.4005, CPAN::Meta::Converter version 2.120921'
+generated_by: 'Module::Build version 0.4007, CPAN::Meta::Converter version 2.132830'
 keywords:
   - alice
   - brfs
@@ -38,51 +38,39 @@ name: Games-LMSolve
 provides:
   Games::LMSolve:
     file: lib/Games/LMSolve.pm
-    version: 0
   Games::LMSolve::Alice:
     file: lib/Games/LMSolve/Alice.pm
-    version: 0
   Games::LMSolve::Base:
     file: lib/Games/LMSolve/Base.pm
-    version: v0.8.5
+    version: v0.8.6
   Games::LMSolve::Input:
     file: lib/Games/LMSolve/Input.pm
-    version: 0
   Games::LMSolve::Input::Scalar::FH:
     file: lib/Games/LMSolve/Input.pm
-    version: 0
   Games::LMSolve::Minotaur:
     file: lib/Games/LMSolve/Minotaur.pm
-    version: 0
   Games::LMSolve::Numbers:
     file: lib/Games/LMSolve/Numbers.pm
-    version: 0
   Games::LMSolve::Plank::Base:
     file: lib/Games/LMSolve/Plank/Base.pm
-    version: 0
   Games::LMSolve::Plank::Hex:
     file: lib/Games/LMSolve/Plank/Hex.pm
-    version: 0
   Games::LMSolve::Registry:
     file: lib/Games/LMSolve/Registry.pm
-    version: 0
   Games::LMSolve::Tilt::Base:
     file: lib/Games/LMSolve/Tilt/Base.pm
-    version: 0
   Games::LMSolve::Tilt::Multi:
     file: lib/Games/LMSolve/Tilt/Multi.pm
-    version: 0
   Games::LMSolve::Tilt::RedBlue:
     file: lib/Games/LMSolve/Tilt/RedBlue.pm
-    version: 0
   Games::LMSolve::Tilt::Single:
     file: lib/Games/LMSolve/Tilt/Single.pm
-    version: 0
 requires:
   English: 0
   Exporter: 0
   Getopt::Long: 0
   Pod::Usage: 0
+  perl: 5.008
   strict: 0
   vars: 0
   warnings: 0
@@ -90,4 +78,4 @@ resources:
   homepage: http://www.shlomifish.org/lm-solve/
   license: http://www.opensource.org/licenses/mit-license.php
   repository: http://bitbucket.org/shlomif/lm-solve-source
-version: v0.8.5
+version: v0.8.6
